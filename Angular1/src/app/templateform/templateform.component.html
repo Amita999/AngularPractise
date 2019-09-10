@@ -1,0 +1,56 @@
+<p>templateform works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form #f="ngForm"(ngSubmit)="Save(f)">
+                <div class="form-group">
+                    <label for="inputName">FirstNAme</label>
+                    <input type="text" class="form-control" placeholder="Enter your name" name="fName" [(ngModel)]="model.fName"
+                    #fName = ngModel
+                    required
+                     >{{model.fName}}
+                    <div *ngIf="fName.errors && fName.touched">
+                           <div class = "alert alert-danger" *ngIf="fName.errors.required">
+                            FirstName is required
+                        </div>
+                    </div>
+                    <label for="lastname">Laastname</label>
+                    <input type="text" class="form-control" placeholder="Enter your lastname"
+                    name="lName" [(ngModel)]="model.lName">{{model.lName}}
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="Enter your EmailId"
+                    name="email" [(ngModel)]="model.email"
+                    #email = ngModel
+                    required
+                    >{{model.email}}
+                    <div *ngIf="email.errors && email.touched">
+                        <div class = "alert alert-danger" *ngIf="email.errors.required">
+                            Email is required
+                        </div>
+                    </div>
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" placeholder="Enter your country"
+                    name="country" [(ngModel)]="model.country">{{model.country}}
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" placeholder="Enter your address"
+                    name="address" [(ngModel)]="model.address">{{model.address}}
+                    <label for="password">password</label>
+                    <input type="password" class="form-control" placeholder="Enter your password"
+                    name="password" [(ngModel)]="model.password"
+                    #password = ngModel
+                    required
+                    
+                    >{{model.password}}
+                    <div *ngIf ="password.errors && password.touched">
+                        <div class="alert alert-danger"*ngIf ="password.errors.required">
+                            Password is required
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" 
+                    [disabled] = "!f.valid"
+                    >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
